@@ -51,7 +51,7 @@ Semana1/
 
 ## Acessando a aplicação
 
-- **Frontend (Angular via Nginx):** [http://localhost:4200](http://localhost:4200)  
+- **Frontend (Angular):** [http://localhost:4200](http://localhost:4200)  
   Página inicial com formulário para adicionar usuários e listar os cadastrados.
 
 - **Backend (Spring Boot):** [http://localhost:8080/usuarios](http://localhost:8080/usuarios)  
@@ -92,7 +92,6 @@ Semana1/
 - Angular 17 (standalone components)
 - PostgreSQL 15
 - Docker & Docker Compose
-- Nginx (para servir o frontend)
 
 ---
 
