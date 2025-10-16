@@ -1,0 +1,18 @@
+<h1>{{ title() }}</h1>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="nome">Nome:</label>
+  <input id="nome" [(ngModel)]="usuario.nome" name="nome" required>
+
+  <label for="idade">Idade:</label>
+  <input id="idade" type="number" [(ngModel)]="usuario.idade" name="idade" required>
+
+  <button type="submit">Adicionar Usuário</button>
+</form>
+
+<hr>
+
+<h2>Usuários cadastrados</h2>
+<ul>
+  <li *ngFor="let u of usuarios">{{ u.nome }} - {{ u.idade }}</li>
+</ul>
