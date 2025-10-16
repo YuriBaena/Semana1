@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: banco_estudo
+    environment:
+      POSTGRES_DB: estudo
+      POSTGRES_USER: yuri
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./back/estudo  # Dockerfile do backend
+    container_name: backend_estudo
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/estudo
+      SPRING_DATASOURCE_USERNAME: yuri
+      SPRING_DATASOURCE_PASSWORD: senha123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./front/appSimples  # Dockerfile do frontend Angular
+    container_name: frontend_estudo
+    depends_on:
+      - backend
+    ports:
+      - "4200:4200"  # Nginx serve na porta 80 dentro do container
+
+volumes:
+  pgdata:
